@@ -20,9 +20,16 @@ final class MyQiitaArticlesView: XibView {
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
-            collectionView.register(ArticleListItemCollectionViewCell.self, forCellWithReuseIdentifier: "myArticleCVCell")
+            collectionView.register(UINib(nibName: "ArticleListItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myArticleCVCell")
+            
             collectionView.dataSource = self
             collectionView.delegate = self
+            
+            let flowLayout = UICollectionViewFlowLayout()
+            flowLayout.itemSize = CGSize(width: collectionView.frame.width - 10, height: 200)
+            flowLayout.minimumLineSpacing = 10
+            
+            collectionView.collectionViewLayout = flowLayout
         }
     }
     
@@ -51,11 +58,11 @@ extension MyQiitaArticlesView: UICollectionViewDataSource {
             return .init()
         }
         
-        cell.articleTitleLabel.text = article.title
-        cell.publisherNameLabel.text = article.publisher.name
+        cell.titleLabel.text = article.title
+        cell.publisherNameLabel.text = article.user.name.isEmpty ? article.user.githubLoginName : article.user.name
         
-        if let url = URL(string: article.publisher.profileImageUrl) {
-            Nuke.loadImage(with: url, into: cell.pusblisherImageView)
+        if let url = URL(string: article.user.profileImageUrl) {
+            Nuke.loadImage(with: url, into: cell.publisherImageView)
         }
         
         return cell

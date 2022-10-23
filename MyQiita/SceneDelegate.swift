@@ -35,21 +35,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        let scenes = UIApplication.shared.connectedScenes
-        
-        guard
-            let windowScene = scenes.first as? UIWindowScene,
-            let window = windowScene.windows.first else {
+        guard let presentViewController = getPresentViewController(),
+           let authorizeMyQiitaViewController = presentViewController as? AuthorizeMyQiitaViewController else {
             return
         }
         
-        var vc: UIViewController? = window.rootViewController
-        while vc?.presentedViewController != nil {
-            vc = vc?.presentedViewController
-        }
-        
-        if let authorizeMyQiitaViewController = vc as? AuthorizeMyQiitaViewController {
-            authorizeMyQiitaViewController.dismiss(animated: true)
+        authorizeMyQiitaViewController.dismiss(animated: true) { [weak self] in
+            guard let presentViewController = self?.getPresentViewController(),
+                  let navigationController = presentViewController as? UINavigationController,
+            let myQiitaArticlesViewController = navigationController.topViewController as? MyQiitaArticlesViewController,
+            let url = URLContexts.first?.url else {
+                return
+            }
+            
+            myQiitaArticlesViewController.getMyQiitaArticlesAfterAuthorize(url: url)
         }
         
     }
@@ -80,6 +79,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+    }
+    
+    private func getPresentViewController() -> UIViewController? {
+        let scenes = UIApplication.shared.connectedScenes
+        
+        guard
+            let windowScene = scenes.first as? UIWindowScene,
+            let window = windowScene.windows.first else {
+            return nil
+        }
+        
+        var viewController: UIViewController? = window.rootViewController
+        while viewController?.presentedViewController != nil {
+            viewController = viewController?.presentedViewController
+        }
+        
+        return viewController
     }
     
     
