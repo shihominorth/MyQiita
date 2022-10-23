@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 
 protocol AuthorizeQiitaAPIServiceLike: AnyObject where Self: APIService {
-    func openAuthorizeUrl(completion: @escaping (Error?) -> Void)
+    func openAuthorizeUrl()
     func isValiedCode(url: URL) -> String?
     func postAccessToken(code: String, completion: @escaping (Result<AccessToken, Error>) -> Void)
 }
@@ -29,22 +29,12 @@ class AuthorizeQiitaAPIService: APIService, AuthorizeQiitaAPIServiceLike {
                    "state=\(state)")!
     }
     
-    func openAuthorizeUrl(completion: @escaping (Error?) -> Void) {
-        guard let oauthURL,
-              let valiedCode = isValiedCode(url: oauthURL) else {
+    func openAuthorizeUrl() {
+        guard let oauthURL else {
             return
         }
         
-        postAccessToken(code: valiedCode) { response in
-            switch response {
-            case .success(let accessToken):
-                UserDefaults.standard.set(accessToken.token, forKey: "token")
-                
-                completion(nil)
-            case .failure(let err):
-                completion(err)
-            }
-        }
+        UIApplication.shared.open(oauthURL)
     }
     
     func isValiedCode(url: URL) -> String? {
