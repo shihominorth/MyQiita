@@ -8,6 +8,12 @@
 import Alamofire
 import Foundation
 
+protocol AuthorizeQiitaAPIServiceLike: AnyObject where Self: APIService {
+    func open(url: URL, completion: @escaping (Error?) -> Void)
+    func isValiedCode(url: URL) -> String?
+    func postAccessToken(code: String, completion: @escaping (Result<AccessToken, Error>) -> Void)
+}
+
 
 class AuthorizeQiitaAPIService: APIService {
     private let clientId = "82902f33d139611c9d301e7fede4a5d1ad077067"
@@ -15,8 +21,7 @@ class AuthorizeQiitaAPIService: APIService {
     
     private let state = "86B3F670AFC10C49"
     
-    var oauthURL: URL? {
-        
+    private var oauthURL: URL? {
         let endpoint = "oauth/authorize"
         
         return URL(string: host + endpoint + "?" + "client_id=\(clientId)" + "&" +
@@ -24,23 +29,24 @@ class AuthorizeQiitaAPIService: APIService {
                    "state=\(state)")!
     }
     
-    func open(url: URL) {
+    func open(url: URL, completion: @escaping (Error?) -> Void) {
         guard let valiedCode = isValiedCode(url: url) else {
             return
         }
         
-        postAccessToken(code: valiedCode) { result in
-            switch result {
-            case .success(let articles):
-                print(articles)
-            case .failure(let error):
-                print(error)
+        postAccessToken(code: valiedCode) { response in
+            switch response {
+            case .success(let accessToken):
+                UserDefaults.standard.set(accessToken.token, forKey: "token")
+                
+                completion(nil)
+            case .failure(let err):
+                completion(err)
             }
         }
     }
     
     func isValiedCode(url: URL) -> String? {
-        
         guard let queryItems = URLComponents(string: url.absoluteString)?.queryItems,
               let code = queryItems.first(where: {$0.name == "code"})?.value,
               let getState = queryItems.first(where: {$0.name == "state"})?.value,
@@ -53,7 +59,7 @@ class AuthorizeQiitaAPIService: APIService {
         
     }
     
-    func postAccessToken(code: String, completion: @escaping (Result<[Article], Error>) -> Void) {
+    func postAccessToken(code: String, completion: @escaping (Result<AccessToken, Error>) -> Void) {
         let endPoint = "access_tokens"
         
         guard let clientSecret = clientSecret,
@@ -73,9 +79,9 @@ class AuthorizeQiitaAPIService: APIService {
                     return
                 }
                 
-                let articles = try JSONDecoder().decode([Article].self, from: data)
+                let accessToken = try JSONDecoder().decode(AccessToken.self, from: data)
                 
-                completion(.success(articles))
+                completion(.success(accessToken))
             } catch {
                 completion(.failure(error))
             }
