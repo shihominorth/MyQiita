@@ -17,8 +17,12 @@
 		6F6F424B290107EE00E15CE4 /* MyQiitaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F424A290107EE00E15CE4 /* MyQiitaUITests.swift */; };
 		6F6F424D290107EE00E15CE4 /* MyQiitaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F424C290107EE00E15CE4 /* MyQiitaUITestsLaunchTests.swift */; };
 		6F6F425D29010CA800E15CE4 /* ArticleListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F425B29010CA800E15CE4 /* ArticleListItemCollectionViewCell.swift */; };
-		6F6F425E29010CA800E15CE4 /* ArticleListItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F425C29010CA800E15CE4 /* ArticleListItemCollectionViewCell.xib */; };
 		6F6F426129010F5100E15CE4 /* MyQiitaArticlesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F426029010F5100E15CE4 /* MyQiitaArticlesModel.swift */; };
+		6F6F4267290161E000E15CE4 /* MyQiitaArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F4266290161E000E15CE4 /* MyQiitaArticlesView.swift */; };
+		6F6F426D2901694000E15CE4 /* ArticleListItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F425C29010CA800E15CE4 /* ArticleListItemCollectionViewCell.xib */; };
+		6FC7AF4A29016A85005AA7F3 /* MyQiitaArticlesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC7AF4929016A85005AA7F3 /* MyQiitaArticlesView.xib */; };
+		6FC7AF4C29016C51005AA7F3 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC7AF4B29016C51005AA7F3 /* XibView.swift */; };
+		6FC7AF4E29017315005AA7F3 /* ViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC7AF4D29017315005AA7F3 /* ViewContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		6F6F425B29010CA800E15CE4 /* ArticleListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F6F425C29010CA800E15CE4 /* ArticleListItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		6F6F426029010F5100E15CE4 /* MyQiitaArticlesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQiitaArticlesModel.swift; sourceTree = "<group>"; };
+		6F6F4266290161E000E15CE4 /* MyQiitaArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQiitaArticlesView.swift; sourceTree = "<group>"; };
+		6FC7AF4929016A85005AA7F3 /* MyQiitaArticlesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyQiitaArticlesView.xib; sourceTree = "<group>"; };
+		6FC7AF4B29016C51005AA7F3 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
+		6FC7AF4D29017315005AA7F3 /* ViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,8 +180,20 @@
 			isa = PBXGroup;
 			children = (
 				6F6F42642901113800E15CE4 /* CollectionViewCells */,
+				6F6F426A290162B600E15CE4 /* MyQiitaArticlesView */,
+				6FC7AF4B29016C51005AA7F3 /* XibView.swift */,
+				6FC7AF4D29017315005AA7F3 /* ViewContainer.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6F6F426A290162B600E15CE4 /* MyQiitaArticlesView */ = {
+			isa = PBXGroup;
+			children = (
+				6F6F4266290161E000E15CE4 /* MyQiitaArticlesView.swift */,
+				6FC7AF4929016A85005AA7F3 /* MyQiitaArticlesView.xib */,
+			);
+			path = MyQiitaArticlesView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,9 +300,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F6F425E29010CA800E15CE4 /* ArticleListItemCollectionViewCell.xib in Resources */,
+				6F6F426D2901694000E15CE4 /* ArticleListItemCollectionViewCell.xib in Resources */,
 				6F6F4236290107ED00E15CE4 /* LaunchScreen.storyboard in Resources */,
 				6F6F4233290107ED00E15CE4 /* Assets.xcassets in Resources */,
+				6FC7AF4A29016A85005AA7F3 /* MyQiitaArticlesView.xib in Resources */,
 				6F6F4231290107EA00E15CE4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,9 +330,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F6F426129010F5100E15CE4 /* MyQiitaArticlesModel.swift in Sources */,
+				6FC7AF4C29016C51005AA7F3 /* XibView.swift in Sources */,
 				6F6F425D29010CA800E15CE4 /* ArticleListItemCollectionViewCell.swift in Sources */,
 				6F6F422E290107EA00E15CE4 /* MyQiitaArticlesViewController.swift in Sources */,
+				6FC7AF4E29017315005AA7F3 /* ViewContainer.swift in Sources */,
 				6F6F422A290107EA00E15CE4 /* AppDelegate.swift in Sources */,
+				6F6F4267290161E000E15CE4 /* MyQiitaArticlesView.swift in Sources */,
 				6F6F422C290107EA00E15CE4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

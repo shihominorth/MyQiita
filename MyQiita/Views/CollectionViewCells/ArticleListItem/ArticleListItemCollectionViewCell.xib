@@ -46,6 +46,10 @@
                 <constraint firstItem="vuV-lt-HlJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lhQ-CU-7sp"/>
                 <constraint firstAttribute="bottom" secondItem="vuV-lt-HlJ" secondAttribute="bottom" id="zoM-Ni-Zgj"/>
             </constraints>
+            <connections>
+                <outlet property="articleTitleLabel" destination="7Tw-ul-Vaz" id="bHx-Jd-Mbk"/>
+                <outlet property="imageView" destination="ZnX-uA-7E9" id="sID-qD-TaV"/>
+            </connections>
             <point key="canvasLocation" x="100" y="20.616113744075829"/>
         </collectionViewCell>
     </objects>

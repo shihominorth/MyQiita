@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+protocol MyQiitaArticlesModel {
+    
+}
+
+class MyQiitaArticlesModelImpl: MyQiitaArticlesModel {
+}

@@ -9,6 +9,9 @@ import UIKit
 
 class ArticleListItemCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var articleTitleLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

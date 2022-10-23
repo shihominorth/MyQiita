@@ -7,22 +7,33 @@
 
 import UIKit
 
-protocol MyQiitaArticlesPresenter {
-    <#requirements#>
+protocol MyQiitaArticlesPresenterLike {
+    
 }
 
 class MyQiitaArticlesViewController: UIViewController {
+    private let viewContainer: MyQiitaArticlesViewLike
+    private let model: MyQiitaArticlesModel
     
-    @IBOutlet weak var collectionView: UICollectionView!
-
+    init(viewContainer: MyQiitaArticlesViewLike, model: MyQiitaArticlesModel) {
+        self.viewContainer = viewContainer
+        self.model = model
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        view = viewContainer.view
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setUpCollectionView()
+       
     }
     
-    private func setUpCollectionView() {
-        collectionView.register(ArticleListItemCollectionViewCell.self, forCellWithReuseIdentifier: "myArticleListItemCVCell")
-    }
+   
 }
 
