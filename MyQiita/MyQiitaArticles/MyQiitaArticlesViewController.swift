@@ -9,6 +9,8 @@ import UIKit
 
 protocol MyQiitaArticlesPresenterLike: AnyObject {
     var articles: [Article] { get set }
+    
+    func getMyQiitaArticlesAfterAuthorize(url: URL)
 }
 
 final class MyQiitaArticlesViewController: UIViewController {
@@ -40,32 +42,41 @@ final class MyQiitaArticlesViewController: UIViewController {
         
         viewContainer.presenterLike = self
         getMyQiitaArticles()
+        
+        self.title = "記事一覧"
     }
     
     private func getMyQiitaArticles() {
         model.getMyQiitaArticles { [weak self] result in
-            guard let self else {
+            self?.handleMyArticlesData(result: result)
+        }
+    }
+    
+   private func handleMyArticlesData(result: Result<[Article], Error>) {
+        switch result {
+        case .success(let articles):
+            self.articles = articles
+            self.viewContainer.successGotMyQiitaArticles()
+        case .failure(let error):
+            guard let error = error as? APIError else {
+                self.navigator.showAlert(on: self)
                 return
             }
-            switch result {
-            case .success(let articles):
-                self.articles = articles
-                self.viewContainer.successGotMyQiitaArticles()
-            case .failure(let error):
-                guard let error = error as? APIError else {
-                    self.navigator.showAlert(on: self)
-                    return
-                }
-                
-                switch error {
-                case .invailedAccessToken:
-                    self.navigator.presentAuthorizeMyQiitaViewController(on: self)
-                default:
-                    self.navigator.showAlert(on: self)
-                }
+            
+            switch error {
+            case .invailedAccessToken:
+                self.navigator.presentAuthorizeMyQiitaViewController(on: self)
+            default:
+                self.navigator.showAlert(on: self)
             }
         }
     }
 }
 
-extension MyQiitaArticlesViewController: MyQiitaArticlesPresenterLike {}
+extension MyQiitaArticlesViewController: MyQiitaArticlesPresenterLike {
+    func getMyQiitaArticlesAfterAuthorize(url: URL) {
+        model.getMyQiitaAriclesAfterAuthorize(url: url) { [weak self] result in
+            self?.handleMyArticlesData(result: result)
+        }
+    }
+}
