@@ -36,7 +36,8 @@ final class MyQiitaArticlesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
+        viewContainer.presenterLike = self
         getMyQiitaArticles()
     }
     

@@ -15,12 +15,12 @@ protocol MyQiitaArticlesViewLike: ViewContainer {
 }
 
 final class MyQiitaArticlesView: XibView {
-    
     weak var presenterLike: MyQiitaArticlesPresenterLike?
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.register(ArticleListItemCollectionViewCell.self, forCellWithReuseIdentifier: "myArticleCVCell")
+            collectionView.dataSource = self
             collectionView.delegate = self
         }
     }
@@ -35,14 +35,34 @@ final class MyQiitaArticlesView: XibView {
     }
 }
 
+extension MyQiitaArticlesView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let articlesCount = presenterLike?.articles.count else {
+            return 0
+        }
+        
+        return articlesCount
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myArticleCVCell", for: indexPath) as? ArticleListItemCollectionViewCell else {
+            return .init()
+        }
+        
+        
+        
+        return cell
+    }
+}
+
 extension MyQiitaArticlesView: UICollectionViewDelegate {}
 
 extension MyQiitaArticlesView: MyQiitaArticlesViewLike {
     func successGotMyQiitaArticles() {
-        <#code#>
+        self.collectionView.reloadData()
     }
     
     func failedGettingMyQiitaArticles() {
-        <#code#>
+        print("failed")
     }
 }
