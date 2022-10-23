@@ -39,6 +39,9 @@ final class MyQiitaArticlesViewController: UIViewController {
         super.viewDidLoad()
         
         viewContainer.presenterLike = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         getMyQiitaArticles()
     }
     
@@ -68,4 +71,5 @@ final class MyQiitaArticlesViewController: UIViewController {
     }
 }
 
-extension MyQiitaArticlesViewController: MyQiitaArticlesPresenterLike {}
+extension MyQiitaArticlesViewController: MyQiitaArticlesPresenterLike {
+}

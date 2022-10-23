@@ -8,10 +8,10 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
-
-
+    
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -24,15 +24,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.makeKeyAndVisible()
         
-        if let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? UINavigationController {
-            let myQiitaArticlesViewController = MyQiitaArticlesViewController()
-            
-            navigationController.viewControllers.append(myQiitaArticlesViewController)
-            
-            window.rootViewController = navigationController
+        guard let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? UINavigationController else {
+            return
         }
+        let myQiitaArticlesViewController = MyQiitaArticlesViewController()
+        
+        navigationController.viewControllers.append(myQiitaArticlesViewController)
+        
+        window.rootViewController = navigationController
     }
-
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        let scenes = UIApplication.shared.connectedScenes
+        
+        guard
+            let windowScene = scenes.first as? UIWindowScene,
+            let window = windowScene.windows.first else {
+            return
+        }
+        
+        var vc: UIViewController? = window.rootViewController
+        while vc?.presentedViewController != nil {
+            vc = vc?.presentedViewController
+        }
+        
+        if let authorizeMyQiitaViewController = vc as? AuthorizeMyQiitaViewController {
+            authorizeMyQiitaViewController.dismiss(animated: true)
+        }
+        
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -60,7 +81,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
+    
+    
 }
 
