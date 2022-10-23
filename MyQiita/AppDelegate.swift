@@ -9,11 +9,19 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? UINavigationController {
+            let myQiitaArticlesViewController: MyQiitaArticlesViewController = {
+                let viewContainer = MyQiitaArticlesView()
+                let model = MyQiitaArticlesModelImpl()
+                
+                return MyQiitaArticlesViewController(viewContainer: viewContainer, model: model)
+            }()
+            
+            navigationController.viewControllers.append(myQiitaArticlesViewController)
+        }
+        
         return true
     }
 
