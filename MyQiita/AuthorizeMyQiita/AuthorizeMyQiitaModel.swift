@@ -12,19 +12,13 @@ protocol AuthorizeMyQiitaModel: AnyObject {
 }
 
 class AuthorizeMyQiitaImpl: AuthorizeMyQiitaModel {
-    weak var APIService: AuthorizeQiitaAPIServiceLike?
+    let APIService: AuthorizeQiitaAPIServiceLike
     
     init(APIService: AuthorizeQiitaAPIServiceLike = AuthorizeQiitaAPIService()) {
         self.APIService = APIService
     }
     
     func openAuthorizeURL(errorBlock: @escaping () -> Void) {
-        APIService?.openAuthorizeUrl { error in
-            guard error != nil else {
-                return
-            }
-            
-            errorBlock()
-        }
+        APIService.openAuthorizeUrl()
     }
 }

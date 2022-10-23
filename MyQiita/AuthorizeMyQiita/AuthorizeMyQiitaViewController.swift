@@ -15,7 +15,8 @@ class AuthorizeMyQiitaViewController: UIViewController {
     private let viewContainer: AuthorizeMyQiitaViewLike
     private let model: AuthorizeMyQiitaModel
     
-    init(viewContainer: AuthorizeMyQiitaViewLike, model: AuthorizeMyQiitaModel) {
+    init(viewContainer: AuthorizeMyQiitaViewLike = AuthorizeMyQiitaView(),
+         model: AuthorizeMyQiitaModel = AuthorizeMyQiitaImpl()) {
         self.viewContainer = viewContainer
         self.model = model
         
