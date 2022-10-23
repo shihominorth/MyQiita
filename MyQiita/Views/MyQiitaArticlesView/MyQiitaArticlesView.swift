@@ -5,6 +5,7 @@
 //  Created by 北島　志帆美 on 2022-10-20.
 //
 
+import Nuke
 import UIKit
 
 protocol MyQiitaArticlesViewLike: ViewContainer {
@@ -53,6 +54,9 @@ extension MyQiitaArticlesView: UICollectionViewDataSource {
         cell.articleTitleLabel.text = article.title
         cell.publisherNameLabel.text = article.publisher.name
         
+        if let url = URL(string: article.publisher.profileImageUrl) {
+            Nuke.loadImage(with: url, into: cell.pusblisherImageView)
+        }
         
         return cell
     }

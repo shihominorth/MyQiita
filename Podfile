@@ -7,6 +7,7 @@ target 'MyQiita' do
 
   # Pods for MyQiita
   pod 'Alamofire'
+  pod 'Nuke'
 
   target 'MyQiitaTests' do
     inherit! :search_paths
