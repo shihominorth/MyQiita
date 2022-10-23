@@ -7,21 +7,19 @@
 
 import UIKit
 
-protocol MyQiitaArticlesPresenterLike {
+protocol MyQiitaArticlesPresenterLike: AnyObject {
     var articles: [Article] { get set }
 }
 
 final class MyQiitaArticlesViewController: UIViewController {
     private let viewContainer: MyQiitaArticlesViewLike
     private let model: MyQiitaArticlesModel
-    var articles: [Article]
+    var articles: [Article] = []
  
     init(viewContainer: MyQiitaArticlesViewLike,
-         model: MyQiitaArticlesModel,
-         articles: [Article]) {
+         model: MyQiitaArticlesModel) {
         self.viewContainer = viewContainer
         self.model = model
-        self.articles = articles
         
         super.init(nibName: nil, bundle: Bundle(for: Self.self))
     }

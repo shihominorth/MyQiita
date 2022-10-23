@@ -16,8 +16,9 @@ final class MyQiitaArtcilesAPIService: APIService, MyQiitaArtcilesAPIServiceLike
     func getMyArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
         let endPoint = "authenticated_user/items"
         
-        guard let url = URL(string: baseURL + endPoint),
-              !UserDefaults.standard.accessToken.isEmpty else {
+        guard let url = URL(string: host + endPoint),
+              let token = UserDefaults.standard.string(forKey: "token"),
+              !token.isEmpty else {
             completion(.failure(APIError.invailedAccessToken))
 
             return
@@ -25,7 +26,7 @@ final class MyQiitaArtcilesAPIService: APIService, MyQiitaArtcilesAPIServiceLike
         
         
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(UserDefaults.standard.accessToken)"
+            "Authorization": "Bearer \(token)"
         ]
         let parameters = [
             "page": 1,
