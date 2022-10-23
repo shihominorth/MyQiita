@@ -8,5 +8,5 @@
 import Foundation
 
 class APIService {
-    var baseURL = "https://qiita.com/api/v2"
+   var baseURL = "https://qiita.com/api/v2"
 }

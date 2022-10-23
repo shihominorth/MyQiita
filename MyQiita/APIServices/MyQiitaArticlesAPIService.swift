@@ -12,7 +12,7 @@ protocol MyQiitaArtcilesAPIServiceLike: AnyObject where Self: APIService {
     func getMyArticles(completion: @escaping (Result<[Article], Error>) -> Void)
 }
 
-class MyQiitaArtcilesAPIService: APIService, MyQiitaArtcilesAPIServiceLike {
+final class MyQiitaArtcilesAPIService: APIService, MyQiitaArtcilesAPIServiceLike {
     func getMyArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
         let endPoint = "authenticated_user/items"
         
