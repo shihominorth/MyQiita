@@ -42,3 +42,6 @@ MVP
 1. xibファイルを使って再利用可能にした
 1. DIを用いて、単体テストがしやすい設計にした
 1. 今回はSwiftLintを用いていないが、SwiftLintのルールに則って品質が保たれたコードを目指した。
+
+### 参考URL
+https://qiita.com/sskmy1024y/items/30b25ba5ad8d56448ffc
