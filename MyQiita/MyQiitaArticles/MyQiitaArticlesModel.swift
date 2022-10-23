@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MyQiitaArticlesModel {
-    func getMyQiitaArticles(completion: @escaping ([Article]?) -> Void)
+    func getMyQiitaArticles(completion: @escaping (Result<[Article], Error>) -> Void)
 }
 
 final class MyQiitaArticlesModelImpl: MyQiitaArticlesModel {
@@ -18,15 +18,13 @@ final class MyQiitaArticlesModelImpl: MyQiitaArticlesModel {
         self.APIService = APIService
     }
         
-    func getMyQiitaArticles(completion: @escaping ([Article]?) -> Void) {
+    func getMyQiitaArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
         APIService.getMyArticles { result in
             switch result {
             case .success(let articles):
-                completion(articles)
+                completion(.success(articles))
             case .failure(let error):
-                print(error)
-                
-                completion(nil)
+                completion(.failure(error))
             }
         }
     }

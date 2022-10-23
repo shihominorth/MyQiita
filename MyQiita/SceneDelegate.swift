@@ -25,12 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         
         if let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? UINavigationController {
-            let myQiitaArticlesViewController: MyQiitaArticlesViewController = {
-                let viewContainer = MyQiitaArticlesView()
-                let model = MyQiitaArticlesModelImpl()
-                
-                return MyQiitaArticlesViewController(viewContainer: viewContainer, model: model)
-            }()
+            let myQiitaArticlesViewController = MyQiitaArticlesViewController()
             
             navigationController.viewControllers.append(myQiitaArticlesViewController)
             

@@ -14,12 +14,15 @@ protocol MyQiitaArticlesPresenterLike: AnyObject {
 final class MyQiitaArticlesViewController: UIViewController {
     private let viewContainer: MyQiitaArticlesViewLike
     private let model: MyQiitaArticlesModel
+    private let navigator: MyQiitaArticlesNavigatorLike
     var articles: [Article] = []
  
-    init(viewContainer: MyQiitaArticlesViewLike,
-         model: MyQiitaArticlesModel) {
+    init(viewContainer: MyQiitaArticlesViewLike = MyQiitaArticlesView(),
+         model: MyQiitaArticlesModel = MyQiitaArticlesModelImpl(),
+         navigator: MyQiitaArticlesNavigatorLike = MyQiitaArticlesNavigator()) {
         self.viewContainer = viewContainer
         self.model = model
+        self.navigator = navigator
         
         super.init(nibName: nil, bundle: Bundle(for: Self.self))
     }
@@ -40,12 +43,26 @@ final class MyQiitaArticlesViewController: UIViewController {
     }
     
     private func getMyQiitaArticles() {
-        model.getMyQiitaArticles { articles in
-            if let articles {
+        model.getMyQiitaArticles { [weak self] result in
+            guard let self else {
+                return
+            }
+            switch result {
+            case .success(let articles):
                 self.articles = articles
                 self.viewContainer.successGotMyQiitaArticles()
-            } else {
-                self.viewContainer.failedGettingMyQiitaArticles()
+            case .failure(let error):
+                guard let error = error as? APIError else {
+                    self.navigator.showAlert(on: self)
+                    return
+                }
+                
+                switch error {
+                case .invailedAccessToken:
+                    self.navigator.presentAuthorizeMyQiitaViewController(on: self)
+                default:
+                    self.navigator.showAlert(on: self)
+                }
             }
         }
     }

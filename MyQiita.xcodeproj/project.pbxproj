@@ -14,6 +14,7 @@
 		6F66E6F32905866400A8A7F1 /* AuthorizeMyQiitaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66E6F22905866400A8A7F1 /* AuthorizeMyQiitaModel.swift */; };
 		6F66E6F5290586B000A8A7F1 /* AuthorizeMyQiitaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66E6F4290586B000A8A7F1 /* AuthorizeMyQiitaView.swift */; };
 		6F66E6F7290586BB00A8A7F1 /* AuthorizeMyQiitaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F66E6F6290586BB00A8A7F1 /* AuthorizeMyQiitaView.xib */; };
+		6F66E6FA290593E900A8A7F1 /* MyQiitaArtcilesNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66E6F9290593E900A8A7F1 /* MyQiitaArtcilesNavigator.swift */; };
 		6F6F422A290107EA00E15CE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F4229290107EA00E15CE4 /* AppDelegate.swift */; };
 		6F6F422C290107EA00E15CE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F422B290107EA00E15CE4 /* SceneDelegate.swift */; };
 		6F6F422E290107EA00E15CE4 /* MyQiitaArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F422D290107EA00E15CE4 /* MyQiitaArticlesViewController.swift */; };
@@ -67,6 +68,7 @@
 		6F66E6F22905866400A8A7F1 /* AuthorizeMyQiitaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeMyQiitaModel.swift; sourceTree = "<group>"; };
 		6F66E6F4290586B000A8A7F1 /* AuthorizeMyQiitaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeMyQiitaView.swift; sourceTree = "<group>"; };
 		6F66E6F6290586BB00A8A7F1 /* AuthorizeMyQiitaView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorizeMyQiitaView.xib; sourceTree = "<group>"; };
+		6F66E6F9290593E900A8A7F1 /* MyQiitaArtcilesNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQiitaArtcilesNavigator.swift; sourceTree = "<group>"; };
 		6F6F4226290107EA00E15CE4 /* MyQiita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyQiita.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F6F4229290107EA00E15CE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F6F422B290107EA00E15CE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				6F6F422D290107EA00E15CE4 /* MyQiitaArticlesViewController.swift */,
 				6F6F426029010F5100E15CE4 /* MyQiitaArticlesModel.swift */,
 				6F6F426A290162B600E15CE4 /* Views */,
+				6F66E6F9290593E900A8A7F1 /* MyQiitaArtcilesNavigator.swift */,
 			);
 			path = MyQiitaArticles;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				6F6F4267290161E000E15CE4 /* MyQiitaArticlesView.swift in Sources */,
 				6FA6B931290540E300F0A119 /* MyQiitaArticlesAPIService.swift in Sources */,
 				6F6F422C290107EA00E15CE4 /* SceneDelegate.swift in Sources */,
+				6F66E6FA290593E900A8A7F1 /* MyQiitaArtcilesNavigator.swift in Sources */,
 				6F66E6EF2905859000A8A7F1 /* AuthorizeMyQiitaViewController.swift in Sources */,
 				6FA6B9392905455400F0A119 /* APIService.swift in Sources */,
 				6F66E6F32905866400A8A7F1 /* AuthorizeMyQiitaModel.swift in Sources */,
