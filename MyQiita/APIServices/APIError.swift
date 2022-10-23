@@ -8,5 +8,5 @@
 import Foundation
 
 enum APIError: Error {
-    case invailedAccessToken, invaliedData, invailedJSON
+    case invailedAccessToken, invaliedData, invailedJSON, invailedUrl
 }

@@ -16,7 +16,7 @@ final class MyQiitaArtcilesAPIService: APIService, MyQiitaArtcilesAPIServiceLike
     func getMyArticles(completion: @escaping (Result<[Article], Error>) -> Void) {
         let endPoint = "authenticated_user/items"
         
-        guard let url = URL(string: baseURL + endPoint),
+        guard let url = URL(string: host + endPoint),
               !UserDefaults.standard.accessToken.isEmpty else {
             completion(.failure(APIError.invailedAccessToken))
 
