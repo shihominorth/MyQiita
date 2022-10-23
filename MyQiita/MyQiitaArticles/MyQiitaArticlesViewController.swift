@@ -42,6 +42,8 @@ final class MyQiitaArticlesViewController: UIViewController {
         
         viewContainer.presenterLike = self
         getMyQiitaArticles()
+        
+        self.title = "記事一覧"
     }
     
     private func getMyQiitaArticles() {
