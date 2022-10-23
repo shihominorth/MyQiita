@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MyQiitaArticlesPresenterLike {
+protocol MyQiitaArticlesPresenterLike: AnyObject {
     var articles: [Article] { get set }
 }
 
