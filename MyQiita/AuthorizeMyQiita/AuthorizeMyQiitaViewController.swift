@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AuthorizeMyQiitaPresenter: AnyObject {
-    
+    func openAuthorizeUrl() 
 }
 
 class AuthorizeMyQiitaViewController: UIViewController {
@@ -34,9 +34,7 @@ class AuthorizeMyQiitaViewController: UIViewController {
         super.viewDidLoad()
 
         viewContainer.presenterLike = self
-        // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -50,4 +48,10 @@ class AuthorizeMyQiitaViewController: UIViewController {
 
 }
 
-extension AuthorizeMyQiitaViewController: AuthorizeMyQiitaPresenter {}
+extension AuthorizeMyQiitaViewController: AuthorizeMyQiitaPresenter {
+    func openAuthorizeUrl() {
+        model.openAuthorizeURL {
+            
+        }
+    }
+}
