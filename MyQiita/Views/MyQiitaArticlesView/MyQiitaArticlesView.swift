@@ -45,10 +45,13 @@ extension MyQiitaArticlesView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myArticleCVCell", for: indexPath) as? ArticleListItemCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myArticleCVCell", for: indexPath) as? ArticleListItemCollectionViewCell,
+              let article = presenterLike?.articles[indexPath.row] else {
             return .init()
         }
         
+        cell.articleTitleLabel.text = article.title
+        cell.publisherNameLabel.text = article.publisher.name
         
         
         return cell
