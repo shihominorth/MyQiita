@@ -50,8 +50,10 @@ class AuthorizeMyQiitaViewController: UIViewController {
 
 extension AuthorizeMyQiitaViewController: AuthorizeMyQiitaPresenter {
     func openAuthorizeUrl() {
-        model.openAuthorizeURL {
+        model.openAuthorizeURL { [weak self] in
+            let alertViewController = UIAlertController(title: "エラー発生しました", message: nil, preferredStyle: .alert)
             
+            self?.present(alertViewController, animated: true)
         }
     }
 }

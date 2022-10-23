@@ -9,6 +9,7 @@ import UIKit
 
 protocol AuthorizeMyQiitaViewLike: ViewContainer {
     var presenterLike: AuthorizeMyQiitaPresenter? { get set }
+    
 }
 
 class AuthorizeMyQiitaView: XibView {
@@ -36,5 +37,4 @@ class AuthorizeMyQiitaView: XibView {
 }
 
 extension AuthorizeMyQiitaView: AuthorizeMyQiitaViewLike {
-    
 }
