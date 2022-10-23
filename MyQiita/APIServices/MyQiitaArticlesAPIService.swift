@@ -17,7 +17,8 @@ final class MyQiitaArtcilesAPIService: APIService, MyQiitaArtcilesAPIServiceLike
         let endPoint = "authenticated_user/items"
         
         guard let url = URL(string: host + endPoint),
-              !UserDefaults.standard.token.isEmpty else {
+              let token = UserDefaults.standard.string(forKey: "token"),
+              !token.isEmpty else {
             completion(.failure(APIError.invailedAccessToken))
 
             return
@@ -25,7 +26,7 @@ final class MyQiitaArtcilesAPIService: APIService, MyQiitaArtcilesAPIServiceLike
         
         
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(UserDefaults.standard.token)"
+            "Authorization": "Bearer \(token)"
         ]
         let parameters = [
             "page": 1,
