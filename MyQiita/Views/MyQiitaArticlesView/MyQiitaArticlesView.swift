@@ -10,7 +10,8 @@ import UIKit
 protocol MyQiitaArticlesViewLike: ViewContainer {
     var presenterLike: MyQiitaArticlesPresenterLike? { get set }
     
-    func setSnapshot()
+    func successGotMyQiitaArticles()
+    func failedGettingMyQiitaArticles()
 }
 
 final class MyQiitaArticlesView: XibView {
@@ -37,7 +38,11 @@ final class MyQiitaArticlesView: XibView {
 extension MyQiitaArticlesView: UICollectionViewDelegate {}
 
 extension MyQiitaArticlesView: MyQiitaArticlesViewLike {
-    func setSnapshot() {
-        
+    func successGotMyQiitaArticles() {
+        <#code#>
+    }
+    
+    func failedGettingMyQiitaArticles() {
+        <#code#>
     }
 }

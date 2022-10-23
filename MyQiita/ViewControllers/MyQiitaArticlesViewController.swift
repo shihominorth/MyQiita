@@ -8,16 +8,22 @@
 import UIKit
 
 protocol MyQiitaArticlesPresenterLike {
-    
+    var articles: [Article] { get set }
 }
 
-class MyQiitaArticlesViewController: UIViewController {
+final class MyQiitaArticlesViewController: UIViewController {
     private let viewContainer: MyQiitaArticlesViewLike
     private let model: MyQiitaArticlesModel
-    
-    init(viewContainer: MyQiitaArticlesViewLike, model: MyQiitaArticlesModel) {
+    var articles: [Article]
+ 
+    init(viewContainer: MyQiitaArticlesViewLike,
+         model: MyQiitaArticlesModel,
+         articles: [Article]) {
         self.viewContainer = viewContainer
         self.model = model
+        self.articles = articles
+        
+        super.init(nibName: nil, bundle: Bundle(for: Self.self))
     }
     
     required init?(coder: NSCoder) {
@@ -30,10 +36,20 @@ class MyQiitaArticlesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-       
+ 
+        getMyQiitaArticles()
     }
     
-   
+    private func getMyQiitaArticles() {
+        model.getMyQiitaArticles { articles in
+            if let articles {
+                self.articles = articles
+                self.viewContainer.successGotMyQiitaArticles()
+            } else {
+                self.viewContainer.failedGettingMyQiitaArticles()
+            }
+        }
+    }
 }
 
+extension MyQiitaArticlesViewController: MyQiitaArticlesPresenterLike {}
