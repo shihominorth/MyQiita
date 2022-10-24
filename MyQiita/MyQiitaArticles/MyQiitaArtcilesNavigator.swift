@@ -10,7 +10,7 @@ import UIKit
 protocol MyQiitaArticlesNavigatorLike: AnyObject {
     func presentAuthorizeMyQiitaViewController(on viewController: UIViewController)
     func showAlert(on viewController: UIViewController)
-    func navigateArticleWebViewController(on viewController: UIViewController, html: String) 
+    func navigateArticleWebViewController(on viewController: UIViewController, urlString: String) 
 }
 
 class MyQiitaArticlesNavigator: MyQiitaArticlesNavigatorLike {
@@ -31,8 +31,8 @@ class MyQiitaArticlesNavigator: MyQiitaArticlesNavigatorLike {
         viewController.present(alertViewController, animated: true)
     }
     
-    func navigateArticleWebViewController(on viewController: UIViewController, html: String) {
-        let articleWebViewController = ArticleWebViewController(html: html)
+    func navigateArticleWebViewController(on viewController: UIViewController, urlString: String) {
+        let articleWebViewController = ArticleWebViewController(urlString: urlString)
         
         guard let navigationViewController = viewController.navigationController else {
             return

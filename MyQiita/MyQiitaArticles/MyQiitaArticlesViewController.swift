@@ -76,7 +76,7 @@ final class MyQiitaArticlesViewController: UIViewController {
 
 extension MyQiitaArticlesViewController: MyQiitaArticlesPresenterLike {
     func navigateToAricleWebViewController(indexPath: IndexPath) {
-        navigator.navigateArticleWebViewController(on: self, html: articles[indexPath.row].renderedBody)
+        navigator.navigateArticleWebViewController(on: self, urlString: articles[indexPath.row].url)
     }
     
     func getMyQiitaArticlesAfterAuthorize(url: URL) {

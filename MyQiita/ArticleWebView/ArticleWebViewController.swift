@@ -14,14 +14,14 @@ protocol ArticleWebPresenterLike: AnyObject {
 class ArticleWebViewController: UIViewController {
     private let viewContainer: ArticleWebViewLike
     private let model: ArticleWebModel
-    private let html: String
+    private let urlString: String
     
     init(viewContainer: ArticleWebViewLike = ArticleWebView(),
          model: ArticleWebModel = ArticleWebModelImpl(),
-         html: String) {
+         urlString: String) {
         self.viewContainer = viewContainer
         self.model = model
-        self.html = html
+        self.urlString = urlString
         
         super.init(nibName: nil, bundle: Bundle(for: Self.self))
     }
@@ -37,7 +37,7 @@ class ArticleWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewContainer.load(html: html)
+        viewContainer.load(urlString: urlString)
     }
     
 
