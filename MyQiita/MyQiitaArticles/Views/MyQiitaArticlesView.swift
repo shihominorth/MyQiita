@@ -69,7 +69,11 @@ extension MyQiitaArticlesView: UICollectionViewDataSource {
     }
 }
 
-extension MyQiitaArticlesView: UICollectionViewDelegate {}
+extension MyQiitaArticlesView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenterLike?.navigateToAricleWebViewController(indexPath: indexPath)
+    }
+}
 
 extension MyQiitaArticlesView: MyQiitaArticlesViewLike {
     func successGotMyQiitaArticles() {
