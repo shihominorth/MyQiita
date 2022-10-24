@@ -10,6 +10,7 @@ import UIKit
 protocol MyQiitaArticlesNavigatorLike: AnyObject {
     func presentAuthorizeMyQiitaViewController(on viewController: UIViewController)
     func showAlert(on viewController: UIViewController)
+    func navigateArticleWebViewController(on viewController: UIViewController, html: String) 
 }
 
 class MyQiitaArticlesNavigator: MyQiitaArticlesNavigatorLike {
@@ -28,5 +29,15 @@ class MyQiitaArticlesNavigator: MyQiitaArticlesNavigatorLike {
         let alertViewController = UIAlertController(title: "エラー発生しました", message: nil, preferredStyle: .alert)
         
         viewController.present(alertViewController, animated: true)
+    }
+    
+    func navigateArticleWebViewController(on viewController: UIViewController, html: String) {
+        let articleWebViewController = ArticleWebViewController(html: html)
+        
+        guard let navigationViewController = viewController.navigationController else {
+            return
+        }
+        
+        navigationViewController.pushViewController(articleWebViewController, animated: true)
     }
 }
