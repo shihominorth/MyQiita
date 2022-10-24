@@ -23,6 +23,8 @@ extension ArticleWebView: ArticleWebViewLike {
        
         let urlRequest = URLRequest(url: url)
         
-        self.load(urlRequest)
+        DispatchQueue.main.async { [weak self] in
+            self?.load(urlRequest)
+        }
     }
 }
