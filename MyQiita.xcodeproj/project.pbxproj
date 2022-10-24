@@ -30,7 +30,6 @@
 		6F9492642906DF0A005FD10C /* ArticleWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9492632906DF0A005FD10C /* ArticleWebView.swift */; };
 		6F9492662906DF19005FD10C /* ArticleWebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9492652906DF19005FD10C /* ArticleWebModel.swift */; };
 		6F9492682906DF2C005FD10C /* ArticleWebNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9492672906DF2C005FD10C /* ArticleWebNavigator.swift */; };
-		6F94926A2906DF3F005FD10C /* ArticleWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F9492692906DF3F005FD10C /* ArticleWebView.xib */; };
 		6FA6B931290540E300F0A119 /* MyQiitaArticlesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA6B930290540E300F0A119 /* MyQiitaArticlesAPIService.swift */; };
 		6FA6B9332905415D00F0A119 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA6B9322905415D00F0A119 /* Article.swift */; };
 		6FA6B9372905432000F0A119 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA6B9362905432000F0A119 /* User.swift */; };
@@ -93,7 +92,6 @@
 		6F9492632906DF0A005FD10C /* ArticleWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWebView.swift; sourceTree = "<group>"; };
 		6F9492652906DF19005FD10C /* ArticleWebModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWebModel.swift; sourceTree = "<group>"; };
 		6F9492672906DF2C005FD10C /* ArticleWebNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWebNavigator.swift; sourceTree = "<group>"; };
-		6F9492692906DF3F005FD10C /* ArticleWebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleWebView.xib; sourceTree = "<group>"; };
 		6FA6B930290540E300F0A119 /* MyQiitaArticlesAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQiitaArticlesAPIService.swift; sourceTree = "<group>"; };
 		6FA6B9322905415D00F0A119 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		6FA6B9362905432000F0A119 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 				6F9492632906DF0A005FD10C /* ArticleWebView.swift */,
 				6F9492652906DF19005FD10C /* ArticleWebModel.swift */,
 				6F9492672906DF2C005FD10C /* ArticleWebNavigator.swift */,
-				6F9492692906DF3F005FD10C /* ArticleWebView.xib */,
 			);
 			path = ArticleWebView;
 			sourceTree = "<group>";
@@ -434,7 +431,6 @@
 			files = (
 				6F6F4236290107ED00E15CE4 /* LaunchScreen.storyboard in Resources */,
 				6F6F4233290107ED00E15CE4 /* Assets.xcassets in Resources */,
-				6F94926A2906DF3F005FD10C /* ArticleWebView.xib in Resources */,
 				6F66E6F7290586BB00A8A7F1 /* AuthorizeMyQiitaView.xib in Resources */,
 				6FC7AF4A29016A85005AA7F3 /* MyQiitaArticlesView.xib in Resources */,
 				6FE1F6152905C5FC00644C95 /* ArticleListItemCollectionViewCell.xib in Resources */,

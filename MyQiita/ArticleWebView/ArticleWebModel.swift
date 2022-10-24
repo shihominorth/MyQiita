@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+protocol ArticleWebModel: AnyObject {
+    
+}
+
+class ArticleWebModelImpl {
+    
+}
+
+extension ArticleWebModelImpl: ArticleWebModel {}
