@@ -9,22 +9,22 @@ import UIKit
 import WebKit
 
 protocol ArticleWebViewLike: ViewContainer {
-    func load(html: String)
+    func load(urlString: String)
 }
 
 class ArticleWebView: WKWebView {
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }
 
 extension ArticleWebView: ArticleWebViewLike {
-    func load(html: String) {
-        self.loadHTMLString(html, baseURL: nil)
+    func load(urlString: String) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+       
+        let urlRequest = URLRequest(url: url)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.load(urlRequest)
+        }
     }
 }

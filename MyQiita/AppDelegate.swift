@@ -10,7 +10,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        setUpNavigationBar()
         
         return true
     }
@@ -29,6 +29,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    private func setUpNavigationBar() {
+        // Override point for customization after application launch.
+        let customAppearance = UINavigationBarAppearance()
+        customAppearance.configureWithOpaqueBackground()
+        customAppearance.backgroundColor = .green
+        customAppearance.titleTextAttributes = [.foregroundColor: UIColor.blue]
 
+        
+        let appearance = UINavigationBar.appearance()
+        appearance.scrollEdgeAppearance = customAppearance
+        appearance.compactAppearance = customAppearance
+        appearance.standardAppearance = customAppearance
+        
+        if #available(iOS 15.0, *) {
+            appearance.compactScrollEdgeAppearance = customAppearance
+        }
+    }
 }
 
