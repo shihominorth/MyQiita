@@ -25,7 +25,7 @@ client_secretを環境変数とし、gitの管理対象から外したため以�
 CLIENT_SECRET=メールにてエージェントに値を伝えました
 ```
 
-- 3番の`import Cocoa`は`import Foundation`に変更をお願いします。
+- ３番は行わなくて大丈夫です。
 - 4番を行なった後にEnvironment.swiftがXcodeのファイル一覧(Project Navigator)にない場合は、`MyQiita/`直下でFinderを開いていただければ`Environment.swift`が見つかるので、
 Project Navigatorにドラッグアンドドロップし、Copy items if neededにチェックを入れてファイルを追加してください。
 
