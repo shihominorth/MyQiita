@@ -36,7 +36,8 @@ class ArticleWebViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        edgesForExtendedLayout = []
         viewContainer.load(urlString: urlString)
     }
     

@@ -24,14 +24,5 @@ extension ArticleWebView: ArticleWebViewLike {
         let urlRequest = URLRequest(url: url)
         
         self.load(urlRequest)
-//        self.navigationDelegate = self
     }
 }
-
-//extension ArticleWebView: WKNavigationDelegate {
-//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//          webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (html, error) -> Void in
-//              print(html)
-//          })
-//      }
-//}
