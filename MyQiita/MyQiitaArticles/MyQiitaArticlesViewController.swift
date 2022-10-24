@@ -11,7 +11,6 @@ protocol MyQiitaArticlesPresenterLike: AnyObject {
     var articles: [Article] { get set }
     
     func getMyQiitaArticlesAfterAuthorize(url: URL)
-    func navigateToAricleWebViewController(indexPath: IndexPath)
 }
 
 final class MyQiitaArticlesViewController: UIViewController {
@@ -75,10 +74,6 @@ final class MyQiitaArticlesViewController: UIViewController {
 }
 
 extension MyQiitaArticlesViewController: MyQiitaArticlesPresenterLike {
-    func navigateToAricleWebViewController(indexPath: IndexPath) {
-        navigator.navigateArticleWebViewController(on: self, html: articles[indexPath.row].renderedBody)
-    }
-    
     func getMyQiitaArticlesAfterAuthorize(url: URL) {
         model.getMyQiitaAriclesAfterAuthorize(url: url) { [weak self] result in
             self?.handleMyArticlesData(result: result)
